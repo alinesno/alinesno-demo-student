@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alinesno.cloud.alinesno.demo.student.entity.LearnScoreEntity;
-import com.alinesno.cloud.alinesno.demo.student.service.ILearnScoreService;
+import com.alinesno.cloud.alinesno.demo.student.entity.StudentClassesEntity;
+import com.alinesno.cloud.alinesno.demo.student.service.IStudentClassesService;
 
 import com.alinesno.cloud.common.core.constants.SpringInstanceScope;
 import com.alinesno.cloud.common.core.page.DatatablesPageBean;
@@ -23,21 +23,21 @@ import com.alinesno.cloud.common.web.base.controller.FeignMethodController;
 import org.springframework.stereotype.Controller;
 
 /**
- * <p>学生分数 前端控制器 </p>
+ * <p>班级 前端控制器 </p>
  *
  * @author 张三
  * @since 2019-10-07 22:12:48
  */
 @Controller
 @Scope(SpringInstanceScope.PROTOTYPE)
-@RequestMapping("alinesno/demo/student/learnScore")
-public class LearnScoreController extends FeignMethodController<LearnScoreEntity, ILearnScoreService> {
+@RequestMapping("alinesno/demo/student/studentClasses")
+public class StudentClassesController extends FeignMethodController<StudentClassesEntity, IStudentClassesService> {
 
 	//日志记录
-	private static final Logger log = LoggerFactory.getLogger(LearnScoreController.class);
+	private static final Logger log = LoggerFactory.getLogger(StudentClassesController.class);
 
 	@Autowired
-	private ILearnScoreService learnScoreService; 
+	private IStudentClassesService studentClassesService; 
 
 	@TranslateCode(value="[{hasStatus:has_status}]")
 	@ResponseBody
@@ -48,8 +48,8 @@ public class LearnScoreController extends FeignMethodController<LearnScoreEntity
     }
 
 	@Override
-	public ILearnScoreService getFeign() {
-		return this.learnScoreService;
+	public IStudentClassesService getFeign() {
+		return this.studentClassesService;
 	}
 
 }

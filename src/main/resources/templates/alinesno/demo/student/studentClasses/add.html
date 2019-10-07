@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body>
+
+<!--
+@desc 班级 添加
+@author 张三
+@since 2019-10-07 22:12:48
+-->
+	<div layout:fragment="content">
+		<div class="container-fluid content-main">
+			<div class="animated fadeIn">
+				<div class="row">
+					<!-- /.col-->
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+								<form class="form-horizontal" id="addForm">
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">班级名称</label>
+	<div class="col-md-9">
+				<input class="form-control" id="classesName" type="text" name="classesName" placeholder="班级名称">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">班主任</label>
+	<div class="col-md-9">
+				<input class="form-control" id="classesMaster" type="text" name="classesMaster" placeholder="班主任">
+			</div>
+</div>
+																			</form>
+							</div>
+						</div>
+					</div>
+					<!-- /.col-->
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script type="text/javascript">
+		function submitHandler() {
+		    var saveUrl = ctx+"alinesno/demo/student/studentClasses/save" ;
+			$.operate.save(saveUrl , $('#addForm').serialize());
+	    }
+	</script>
+
+</body>
+</html>
+
+

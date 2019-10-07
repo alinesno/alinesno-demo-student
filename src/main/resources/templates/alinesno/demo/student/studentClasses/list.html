@@ -4,7 +4,7 @@
 <body class="gray-bg">
 
 <!--
-@desc 教程 管理
+@desc 班级 管理
 @author 张三
 @since 2019-10-07 22:12:48
 -->
@@ -15,15 +15,8 @@
 				<form id="operlog-form">
 					<div class="select-list">
 						<ul>
-		<li><label> 老师名称 </label><input type="text" name="condition[teacherName|like]"/></li>
-						<li><label> 老师头像 </label><input type="text" name="condition[teracherAvotor|like]"/></li>
-						<li><label> 管理班级 </label><input type="text" name="condition[classesName|like]"/></li>
-						<li><label> 老师地址 </label><input type="text" name="condition[teacherAddress|like]"/></li>
-						<li class="select-time"><label> 老师生日 </label>
-							<input type="text" class="time-input" placeholder="开始时间" name="condition[teacherBirthday|like]" lay-key="1">
-							<span>-</span>
-							<input type="text" class="time-input" placeholder="结束时间" name="condition[teacherBirthday|like]" lay-key="2">
-						</li>
+		<li><label> 班级名称 </label><input type="text" name="condition[classesName|like]"/></li>
+						<li><label> 班主任 </label><input type="text" name="condition[classesMaster|like]"/></li>
 						<li>
 							<a class="btn btn-success btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
 							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
@@ -60,7 +53,7 @@
 	<footer th:replace="dashboard/footer :: footer"></footer>
 
 	<script>
-		var prefix = ctx + "alinesno/demo/student/teacher/" ;
+		var prefix = ctx + "alinesno/demo/student/studentClasses/" ;
 
 		$(function() {
 		    var options = {
@@ -75,17 +68,14 @@
 		        sortName: "operTime",
 		        uniqueId:"id" ,
 		        sortOrder: "desc",
-                modalName: "教程",
+                modalName: "班级",
 		        escape: true,
 		        showPageGo: true,
 		        rememberSelected: true,
 		        columns: [{field: 'state',checkbox: true },
 
-		{field: 'teacherName', title: '老师名称'},
-					{field: 'teracherAvotor', title: '老师头像'},
-					{field: 'classesName', title: '管理班级'},
-					{field: 'teacherAddress', title: '老师地址'},
-					{field: 'teacherBirthday', title: '老师生日'},
+		{field: 'classesName', title: '班级名称'},
+					{field: 'classesMaster', title: '班主任'},
 					    {field: 'hasStatusLabel', title: '状态', align: 'center',  formatter:function(value,row,index){ return $.table.status(value , row);}},
 			        {field: 'addTime', title: '添加时间', align:'center' , width:'150px', sortable: true},
 			        {field: 'id' , title: '操作', align: 'center', width:'200px', formatter: function(value, row, index) {
