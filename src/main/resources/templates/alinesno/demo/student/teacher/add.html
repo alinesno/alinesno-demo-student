@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body>
+
+<!--
+@desc 教程 添加
+@author 张三
+@since 2019-10-07 22:02:06
+-->
+	<div layout:fragment="content">
+		<div class="container-fluid content-main">
+			<div class="animated fadeIn">
+				<div class="row">
+					<!-- /.col-->
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+								<form class="form-horizontal" id="addForm">
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">老师名称</label>
+	<div class="col-md-9">
+				<input class="form-control" id="teacherName" type="text" name="teacherName" placeholder="老师名称">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">老师头像</label>
+	<div class="col-md-9">
+				<input class="form-control" id="teracherAvotor" type="text" name="teracherAvotor" placeholder="老师头像">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">管理班级</label>
+	<div class="col-md-9">
+				<input class="form-control" id="classesName" type="text" name="classesName" placeholder="管理班级">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">老师地址</label>
+	<div class="col-md-9">
+				<input class="form-control" id="teacherAddress" type="text" name="teacherAddress" placeholder="老师地址">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">老师生日</label>
+	<div class="col-md-9">
+				<div class="input-group date">
+			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			<input type="text" class="form-control time-input" 
+			       id="laydate-demo-3" 
+			       name="teacherBirthday" 
+			       data-type="date" 
+			       data-format="yyyy-MM-dd" 
+			       placeholder="yyyy-MM-dd" lay-key="3">
+		</div>
+			</div>
+</div>
+																			</form>
+							</div>
+						</div>
+					</div>
+					<!-- /.col-->
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script type="text/javascript">
+		function submitHandler() {
+		    var saveUrl = ctx+"alinesno/demo/student/teacher/save" ;
+			$.operate.save(saveUrl , $('#addForm').serialize());
+	    }
+	</script>
+
+</body>
+</html>
+
+

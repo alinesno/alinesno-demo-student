@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body class="gray-bg">
+
+<!--
+@desc 学生分数 管理
+@author 张三
+@since 2019-10-07 22:02:06
+-->
+
+	<div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="operlog-form">
+					<div class="select-list">
+						<ul>
+		<li><label> 所属学生 </label><input type="text" name="condition[studentId|like]"/></li>
+						<li><label> 数学 </label><input type="text" name="condition[mathScore|like]"/></li>
+						<li><label> 中文 </label><input type="text" name="condition[chinaScore|like]"/></li>
+						<li><label> 英语 </label><input type="text" name="condition[englishScore|like]"/></li>
+						<li><label> 物理 </label><input type="text" name="condition[physicsScore|like]"/></li>
+						<li><label> 微积分 </label><input type="text" name="condition[calculusScore|like]"/></li>
+						<li><label> 图形学 </label><input type="text" name="condition[graphicsScore|like]"/></li>
+						<li>
+							<a class="btn btn-success btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="btn-group-sm" id="toolbar" role="group">
+				<a class="btn btn-success" onclick="$.operate.add()">
+	                <i class="fa fa-plus"></i> 新增
+	            </a>
+	            <a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()">
+		            <i class="fa fa-edit"></i> 修改
+		        </a>
+				<a class="btn btn-danger btn-del disabled" onclick="$.operate.removeAll()">
+		            <i class="fa fa-remove"></i> 删除
+		        </a>
+		        <a class="btn btn-danger" onclick="$.operate.clean()">
+	                <i class="fa fa-trash"></i> 清空
+	            </a>
+	            <a class="btn btn-warning" onclick="$.table.exportExcel()">
+		            <i class="fa fa-download"></i> 导出
+		        </a>
+	        </div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script>
+		var prefix = ctx + "alinesno/demo/student/learnScore/" ;
+
+		$(function() {
+		    var options = {
+		        url: prefix +"datatables" ,
+		        createUrl: prefix + 'add' ,
+		        updateUrl: prefix +"modify?id={id}" ,
+		        changeStatusUrl: prefix +"changeStatus?id={id}" ,
+		        cleanUrl: prefix + "clean",
+		        detailUrl: prefix +"detail?id={id}",
+		        removeUrl: prefix + "delete" ,
+		        exportUrl: prefix + "export",
+		        sortName: "operTime",
+		        uniqueId:"id" ,
+		        sortOrder: "desc",
+                modalName: "学生分数",
+		        escape: true,
+		        showPageGo: true,
+		        rememberSelected: true,
+		        columns: [{field: 'state',checkbox: true },
+
+		{field: 'studentId', title: '所属学生'},
+					{field: 'mathScore', title: '数学'},
+					{field: 'chinaScore', title: '中文'},
+					{field: 'englishScore', title: '英语'},
+					{field: 'physicsScore', title: '物理'},
+					{field: 'calculusScore', title: '微积分'},
+					{field: 'graphicsScore', title: '图形学'},
+					    {field: 'hasStatusLabel', title: '状态', align: 'center',  formatter:function(value,row,index){ return $.table.status(value , row);}},
+			        {field: 'addTime', title: '添加时间', align:'center' , width:'150px', sortable: true},
+			        {field: 'id' , title: '操作', align: 'center', width:'200px', formatter: function(value, row, index) {
+			                var actions = [];
+
+			                actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="$.operate.detail(\'' + row.id + '\')"><i class="fa fa-edit"></i>详情</a> ');
+			                actions.push('<a class="btn btn-success btn-xs" href="javascript:void(0)" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+			                actions.push('<a class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-remove"></i>删除</a> ');
+
+			                return actions.join('');
+			          }
+			     }]
+		    };
+		    $.table.init(options);
+		});
+
+	</script>
+</body>
+</html>
+

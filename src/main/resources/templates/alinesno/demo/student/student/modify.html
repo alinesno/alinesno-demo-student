@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body>
+
+<!--
+@desc 学生 更新
+@author 张三
+@since 2019-10-07 22:02:06
+-->
+
+	<div layout:fragment="content">
+		<div class="container-fluid content-main">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+
+								<form class="form-horizontal" id="modifyForm">
+
+									<input type="hidden" name="id" th:value="${bean.id}" />
+									
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生姓名 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentName" type="text" th:value="${ bean.studentName}" name="studentName" placeholder="学生姓名">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学号 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentNumber" type="text" th:value="${ bean.studentNumber}" name="studentNumber" placeholder="学号">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">生日 </label>
+	<div class="col-md-9">
+				<div class="input-group date">
+			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			<input type="text" class="form-control time-input" 
+			       id="laydate-demo-3" name="studentBirthday" 
+				   th:value="${ #dates.format(bean.studentBirthday, 'yyyy-MM-dd HH:mm:ss')}" 
+			       data-type="datetime" 
+			       data-format="yyyy-MM-dd HH:mm:ss" 
+			       placeholder="yyyy-MM-dd HH:mm:ss" lay-key="3">
+		</div>
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生住址 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentAddress" type="text" th:value="${ bean.studentAddress}" name="studentAddress" placeholder="学生住址">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">民族 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentNatice" type="text" th:value="${ bean.studentNatice}" name="studentNatice" placeholder="民族">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生电话 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentPhone" type="text" th:value="${ bean.studentPhone}" name="studentPhone" placeholder="学生电话">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生头像 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentAvotor" type="text" th:value="${ bean.studentAvotor}" name="studentAvotor" placeholder="学生头像">
+			</div>
+</div>
+																				</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script type="text/javascript">
+		function submitHandler() {
+            var modifyUrl = ctx+"alinesno/demo/student/student/update" ;
+			$.operate.save(modifyUrl , $('#modifyForm').serialize());
+	    }
+	</script>
+</body>
+</html>

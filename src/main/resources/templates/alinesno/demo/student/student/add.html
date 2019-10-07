@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body>
+
+<!--
+@desc 学生 添加
+@author 张三
+@since 2019-10-07 22:02:06
+-->
+	<div layout:fragment="content">
+		<div class="container-fluid content-main">
+			<div class="animated fadeIn">
+				<div class="row">
+					<!-- /.col-->
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+								<form class="form-horizontal" id="addForm">
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生姓名</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentName" type="text" name="studentName" placeholder="学生姓名">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学号</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentNumber" type="text" name="studentNumber" placeholder="学号">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">生日</label>
+	<div class="col-md-9">
+				<div class="input-group date">
+			<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+			<input type="text" class="form-control time-input" 
+			       id="laydate-demo-3" 
+			       name="studentBirthday" 
+			       data-type="datetime" 
+			       data-format="yyyy-MM-dd HH:mm:ss" 
+			       placeholder="yyyy-MM-dd HH:mm:ss" lay-key="3">
+		</div>
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生住址</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentAddress" type="text" name="studentAddress" placeholder="学生住址">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">民族</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentNatice" type="text" name="studentNatice" placeholder="民族">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生电话</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentPhone" type="text" name="studentPhone" placeholder="学生电话">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">学生头像</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentAvotor" type="text" name="studentAvotor" placeholder="学生头像">
+			</div>
+</div>
+																			</form>
+							</div>
+						</div>
+					</div>
+					<!-- /.col-->
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script type="text/javascript">
+		function submitHandler() {
+		    var saveUrl = ctx+"alinesno/demo/student/student/save" ;
+			$.operate.save(saveUrl , $('#addForm').serialize());
+	    }
+	</script>
+
+</body>
+</html>
+
+

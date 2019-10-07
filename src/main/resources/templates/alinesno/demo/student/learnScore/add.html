@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body>
+
+<!--
+@desc 学生分数 添加
+@author 张三
+@since 2019-10-07 22:02:06
+-->
+	<div layout:fragment="content">
+		<div class="container-fluid content-main">
+			<div class="animated fadeIn">
+				<div class="row">
+					<!-- /.col-->
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+								<form class="form-horizontal" id="addForm">
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">所属学生</label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentId" type="text" name="studentId" placeholder="所属学生">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">数学</label>
+	<div class="col-md-9">
+				<input class="form-control" id="mathScore" type="text" name="mathScore" placeholder="数学">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">中文</label>
+	<div class="col-md-9">
+				<input class="form-control" id="chinaScore" type="text" name="chinaScore" placeholder="中文">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">英语</label>
+	<div class="col-md-9">
+				<input class="form-control" id="englishScore" type="text" name="englishScore" placeholder="英语">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">物理</label>
+	<div class="col-md-9">
+				<input class="form-control" id="physicsScore" type="text" name="physicsScore" placeholder="物理">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">微积分</label>
+	<div class="col-md-9">
+				<input class="form-control" id="calculusScore" type="text" name="calculusScore" placeholder="微积分">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">图形学</label>
+	<div class="col-md-9">
+				<input class="form-control" id="graphicsScore" type="text" name="graphicsScore" placeholder="图形学">
+			</div>
+</div>
+																			</form>
+							</div>
+						</div>
+					</div>
+					<!-- /.col-->
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script type="text/javascript">
+		function submitHandler() {
+		    var saveUrl = ctx+"alinesno/demo/student/learnScore/save" ;
+			$.operate.save(saveUrl , $('#addForm').serialize());
+	    }
+	</script>
+
+</body>
+</html>
+
+

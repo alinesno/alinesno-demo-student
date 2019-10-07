@@ -1,0 +1,17 @@
+server:
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: alinesno-demo-student
+  datasource:
+    url: jdbc:mysql://db4free.net:3306/alinesno_demo?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&serverTimezone=GMT
+    username: alinesno_demo
+    password: alinesno_demo
+  devtools:
+    restart:
+      enabled: false 
+   
+dubbo:
+  application:
+    name: alinesno-demo-student

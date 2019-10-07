@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="dashboard/header :: header"></head>
+<body>
+
+<!--
+@desc 学生分数 更新
+@author 张三
+@since 2019-10-07 22:02:06
+-->
+
+	<div layout:fragment="content">
+		<div class="container-fluid content-main">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-body">
+
+								<form class="form-horizontal" id="modifyForm">
+
+									<input type="hidden" name="id" th:value="${bean.id}" />
+									
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">所属学生 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="studentId" type="text" th:value="${ bean.studentId}" name="studentId" placeholder="所属学生">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">数学 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="mathScore" type="text" th:value="${ bean.mathScore}" name="mathScore" placeholder="数学">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">中文 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="chinaScore" type="text" th:value="${ bean.chinaScore}" name="chinaScore" placeholder="中文">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">英语 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="englishScore" type="text" th:value="${ bean.englishScore}" name="englishScore" placeholder="英语">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">物理 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="physicsScore" type="text" th:value="${ bean.physicsScore}" name="physicsScore" placeholder="物理">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">微积分 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="calculusScore" type="text" th:value="${ bean.calculusScore}" name="calculusScore" placeholder="微积分">
+			</div>
+</div>
+												<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label" for="text-input">图形学 </label>
+	<div class="col-md-9">
+				<input class="form-control" id="graphicsScore" type="text" th:value="${ bean.graphicsScore}" name="graphicsScore" placeholder="图形学">
+			</div>
+</div>
+																				</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="dashboard/footer :: footer"></footer>
+
+	<script type="text/javascript">
+		function submitHandler() {
+            var modifyUrl = ctx+"alinesno/demo/student/learnScore/update" ;
+			$.operate.save(modifyUrl , $('#modifyForm').serialize());
+	    }
+	</script>
+</body>
+</html>
