@@ -1,0 +1,75 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: test-alinesno-demo-student
+  labels:
+    app: test-alinesno-demo-student
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: test-alinesno-demo-student
+  template:
+    metadata:
+      labels:
+        app: test-alinesno-demo-student
+    spec:
+      containers:
+      - name: test-alinesno-demo-student
+        image: registry-vpc.cn-shenzhen.aliyuncs.com/alinesno-cloud/alinesno-demo-student
+        ports:
+        - containerPort: 28080
+          protocol: TCP
+        env:
+          - name: SPRING_APPLICATION_NAME
+            value: 'alinesno-demo-student'
+          - name: SERVER_PORT
+            value: '8080'
+          - name: REGISTER_ADDRESS
+            value: 'zookeeper://zookeeper-test:2181/'
+          - name: REDIS_HOST
+            value: 'redis-test'
+          - name: REDIS_PORT
+            value: '6379'
+          - name: REDIS_PASSWORD
+            value: 'alinesno'
+          - name: DATASOURCE_URL
+            value: 'jdbc:mysql://mysql-test:3306/test?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&serverTimezone=GMT'
+          - name: DATASOURCE_HOST
+            value: 'mysql-test:3306'
+          - name: DATASOURCE_DATABASE
+            value: 'alinesno_cloud_base_boot'
+          - name: DATASOURCE_USERNAME
+            value: 'root'
+          - name: DATASOURCE_PASSWORD
+            value: 'LuoAnDong@Switch'
+          - name: DUBBO_IP_TO_REGISTRY
+            value: '119.23.247.48'
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 45
+        imagePullPolicy: IfNotPresent
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-alinesno-demo-student
+  namespace: default
+  labels:
+    app: test-alinesno-demo-student
+spec:
+  ports:
+    - name: tcp-28080
+      protocol: TCP
+      port: 28080
+      targetPort: 28080
+      nodePort: 28080
+  selector:
+    app: test-alinesno-demo-student
+  type: NodePort
+
