@@ -11,7 +11,7 @@ node("hub-node") {
     }
 
    stage('工程打包') {
-      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package spring-boot:repackage"
    }
 
     stage ('单元测试') {
