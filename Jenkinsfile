@@ -2,7 +2,7 @@ node("hub-node") {
    def mvnHome
 
    stage('构建准备') {
-        // git url: 'https://github.com/alinesno/alinesno-demo-student.git'
+        git url: 'https://github.com/alinesno/alinesno-demo-student.git'
         mvnHome = tool 'M3'
 
         env.JAVA_HOME="${tool 'jdk1.8.0_112'}"
