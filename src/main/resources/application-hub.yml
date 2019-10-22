@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    properties:
+      hibernate :
+        show_sql: true 
+  application:
+    name: ${SPRING_APPLICATION_NAME}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+  devtools:
+    restart:
+      enabled: false 
+  redis:
+    host: ${REDIS_HOST:127.0.0.1}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD}
+
+server:
+  port: ${SERVER_PORT}
+  
+dubbo:
+  application:
+    name: ${SPRING_APPLICATION_NAME}
+  config-center:
+    address: ${REGISTER_ADDRESS}
+  metadata-report:
+    address: ${REGISTER_ADDRESS}
+  registry:
+    address: ${REGISTER_ADDRESS}
+
