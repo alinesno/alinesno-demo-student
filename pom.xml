@@ -34,6 +34,16 @@
 
 	</dependencies>
 
+<repositories>
+	<repository>
+		<id>alinesno</id>
+		<url>http://repository.linesno.com</url>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+</repositories>
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 	</build>
